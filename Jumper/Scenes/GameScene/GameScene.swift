@@ -8,10 +8,21 @@
 import SpriteKit
 
 class GameScene: SKScene {
+  
+  var splop:SKSpriteNode?
+  var firstTouchPosition:CGPoint?
     
   // MARK: DID MOVE
 
-  override func didMove(to view: SKView) {}
+  override func didMove(to view: SKView) {
+    createWorld()
+    createSplop()
+    setup()
+  }
+  
+  func setup() {
+    physicsWorld.contactDelegate = self
+  }
     
     
   func _temp(to sprite: SKSpriteNode, with name: String) {
