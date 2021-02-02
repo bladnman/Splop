@@ -9,7 +9,7 @@ import SpriteKit
 
 class GameScene: SKScene {
   
-  var splop:SKSpriteNode?
+  var splop:Splop?
   var firstTouchPosition:CGPoint?
     
   // MARK: DID MOVE

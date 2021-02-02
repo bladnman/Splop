@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C1276DF25C7308D003B09F2 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50E51A25C7188500C2422C /* SKNode+Extensions.swift */; };
+		6C1276E425C79D35003B09F2 /* Splop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1276E325C79D35003B09F2 /* Splop.swift */; };
 		6C50E4FF25C64F1100C2422C /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50E4FC25C64DB100C2422C /* AnimationHelper.swift */; };
 		6C50E50125C64F1300C2422C /* PhysicsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C778B7125C644BF003565BF /* PhysicsHelper.swift */; };
 		6C50E50525C6E88400C2422C /* GS+Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50E50425C6E88400C2422C /* GS+Input.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C1276E325C79D35003B09F2 /* Splop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splop.swift; sourceTree = "<group>"; };
 		6C50E4FC25C64DB100C2422C /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 		6C50E50425C6E88400C2422C /* GS+Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Input.swift"; sourceTree = "<group>"; };
 		6C50E50825C6E90600C2422C /* GS+Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Physics.swift"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		6CF5492425C6424C0042534E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6C1276E325C79D35003B09F2 /* Splop.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				6CF5490E25C641E10042534E /* GameScene.swift in Sources */,
 				6C50E51625C7082F00C2422C /* GS+Creator.swift in Sources */,
 				6C778B6E25C64449003565BF /* Constants.swift in Sources */,
+				6C1276E425C79D35003B09F2 /* Splop.swift in Sources */,
 				6C50E50525C6E88400C2422C /* GS+Input.swift in Sources */,
 				6C50E50D25C6E93200C2422C /* GS+Update.swift in Sources */,
 				6C50E4FF25C64F1100C2422C /* AnimationHelper.swift in Sources */,

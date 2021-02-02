@@ -9,7 +9,7 @@ import SpriteKit
 
 extension GameScene {
   func createSplop() {
-    let splop = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
+    let splop = Splop(color: UIColor.red, size: CGSize(width: 50, height: 50))
     splop.position = CGPoint(x: 100, y: 100)
     splop.setScale(0.75)
     splop.physicsBody = SKPhysicsBody.init(rectangleOf: splop.frame.size)
