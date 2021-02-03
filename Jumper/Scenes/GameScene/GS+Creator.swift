@@ -10,25 +10,42 @@ import SpriteKit
 extension GameScene {
   func createSplop() {
     let splop = Splop(color: UIColor.red, size: CGSize(width: 50, height: 50))
+    splop.name = C_OBJ_NAME.splop
     splop.position = CGPoint(x: 100, y: 100)
     splop.setScale(0.75)
-    splop.physicsBody = SKPhysicsBody.init(rectangleOf: splop.frame.size)
+    splop.physicsBody = SKPhysicsBody(rectangleOf: splop.frame.size)
     splop.physicsBody?.isDynamic = true
-    splop.physicsBody?.contactTestBitMask = 0x2
+    splop.physicsBody?.categoryBitMask = C_PHY_CAT.splop
+    splop.physicsBody?.contactTestBitMask = C_PHY_CAT.frame | C_PHY_CAT.ground
+    splop.physicsBody?.collisionBitMask = C_PHY_CAT.frame | C_PHY_CAT.ground
     splop.physicsBody?.restitution = 0.0
     splop.physicsBody?.allowsRotation = false
 
-    
     addChild(splop)
 
     self.splop = splop
-    
   }
-  func createWorld() {
-    self.physicsBody = SKPhysicsBody.init(edgeLoopFrom: self.frame)
-    self.physicsBody?.contactTestBitMask = 0x1
-    self.physicsBody?.restitution = 0.0
+
+  func createPlatforms() {
+//    let platforms = self.children.filter { $0.name == "platform" }
     
+    self.enumerateChildNodes(withName: "platform") {
+      platform, _ in
+      platform.name = C_OBJ_NAME.platform
+      platform.physicsBody?.categoryBitMask = C_PHY_CAT.ground
+//      platform.physicsBody?.contactTestBitMask = 0x2
+      print("node \(platform)")
+    }
+  }
+
+  func createWorld() {
+    self.createPlatforms()
+
+    self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+//    self.physicsBody?.contactTestBitMask = C_PHY_CAT.splop
+    self.physicsBody?.restitution = 0.0
+    self.physicsBody?.categoryBitMask = C_PHY_CAT.frame
+
     func handleInteractionToggle(_: String) {
       tossType = (tossType == TossType.flick) ? TossType.snap : TossType.flick
       print("button pressed \(tossType)")
@@ -38,6 +55,4 @@ extension GameScene {
     interactionTypeButton.position = CGPoint(x: frame.width - interactionTypeButton.size.width, y: frame.height - interactionTypeButton.size.height)
     self.addChild(interactionTypeButton)
   }
-
 }
-

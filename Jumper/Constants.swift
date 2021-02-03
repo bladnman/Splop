@@ -12,21 +12,18 @@ import Foundation
 struct Constants {
   struct Objects {
     enum Names {
-      static let player = "player"
+      static let splop = "splop"
+      static let platform = "platform"
     }
   }
   
   struct Physics {
     enum Categories {
       static let none: UInt32 = 0
-      static let all = UInt32.max
-      static let player: UInt32 = 0x1
+      static let splop: UInt32 = 0x1
       static let ground: UInt32 = 0x1 << 1
-      static let finish: UInt32 = 0x1 << 2
-      static let collectible: UInt32 = 0x1 << 3
-      static let enemy: UInt32 = 0x1 << 4
-      static let frame: UInt32 = 0x1 << 5
-      static let ceiling: UInt32 = 0x1 << 6
+      static let frame: UInt32 = 0x1 << 2
+      static let all = UInt32.max
     }
   }
   enum ZPositions {

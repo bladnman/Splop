@@ -11,12 +11,16 @@ extension GameScene {
   // MARK: TOUCHES
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.firstTouchPosition = touches.first?.location(in: self)
+    firstTouchPosition = touches.first?.location(in: self)
     updateTossIndicator()
+    let hintAni = SKAction.sequence([
+      SKAction.run(tossHint), SKAction.wait(forDuration: 0.05)
+    ])
+    self.run(SKAction.repeatForever(hintAni))
   }
 
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.lastTouchPosition = touches.first?.location(in: self)
+    lastTouchPosition = touches.first?.location(in: self)
     updateTossIndicator()
   }
 
@@ -30,9 +34,10 @@ extension GameScene {
     touchingDone()
     updateTossIndicator()
   }
-  
+
   func touchingDone() {
     firstTouchPosition = nil
     lastTouchPosition = nil
+    self.removeAllActions()
   }
 }
