@@ -28,6 +28,15 @@ extension GameScene {
     self.physicsBody = SKPhysicsBody.init(edgeLoopFrom: self.frame)
     self.physicsBody?.contactTestBitMask = 0x1
     self.physicsBody?.restitution = 0.0
+    
+    func handleInteractionToggle(_: String) {
+      tossType = (tossType == TossType.flick) ? TossType.snap : TossType.flick
+      print("button pressed \(tossType)")
+    }
+    let interactionTypeButton = SpriteKitButton(defaultButtonImageNamed: "EmptyButton", onPress: handleInteractionToggle, buttonKey: "interactionTypeButton")
+    interactionTypeButton.scaleToWidth(frame.width * 0.05)
+    interactionTypeButton.position = CGPoint(x: frame.width - interactionTypeButton.size.width, y: frame.height - interactionTypeButton.size.height)
+    self.addChild(interactionTypeButton)
   }
 
 }

@@ -7,10 +7,19 @@
 
 import SpriteKit
 
+enum TossType {
+  case flick
+  case snap
+}
+
 class GameScene: SKScene {
   
   var splop:Splop?
   var firstTouchPosition:CGPoint?
+  var lastTouchPosition:CGPoint?
+  var tossType = TossType.flick
+  var tossIndicatorNode: SKNode?
+  var tossIndicatorDot: SKShapeNode?
     
   // MARK: DID MOVE
 
