@@ -18,12 +18,15 @@
 		6C50E50D25C6E93200C2422C /* GS+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50E50C25C6E93200C2422C /* GS+Update.swift */; };
 		6C50E51625C7082F00C2422C /* GS+Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C50E51525C7082F00C2422C /* GS+Creator.swift */; };
 		6C778B6E25C64449003565BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C778B6D25C64449003565BF /* Constants.swift */; };
+		6C9B047825CB5C260018F49F /* HintGlow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047625CB5C260018F49F /* HintGlow.sks */; };
+		6C9B047925CB5C260018F49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047725CB5C260018F49F /* Assets.xcassets */; };
 		6CF5490825C641E10042534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490725C641E10042534E /* AppDelegate.swift */; };
 		6CF5490A25C641E10042534E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5490925C641E10042534E /* GameScene.sks */; };
 		6CF5490E25C641E10042534E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490D25C641E10042534E /* GameScene.swift */; };
 		6CF5491025C641E10042534E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490F25C641E10042534E /* GameViewController.swift */; };
 		6CF5491325C641E10042534E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5491125C641E10042534E /* Main.storyboard */; };
 		6CF5491525C641E20042534E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5491425C641E20042534E /* Assets.xcassets */; };
+		6CF707A325CB5FB90037599D /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CF707A225CB5FB90037599D /* Magic.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,8 @@
 		6C50E51A25C7188500C2422C /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
 		6C778B6D25C64449003565BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6C778B7125C644BF003565BF /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
+		6C9B047625CB5C260018F49F /* HintGlow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HintGlow.sks; sourceTree = "<group>"; };
+		6C9B047725CB5C260018F49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CF5490425C641E10042534E /* Jumper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF5490725C641E10042534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CF5490925C641E10042534E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		6CF5491225C641E10042534E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6CF5491425C641E20042534E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CF5491625C641E20042534E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CF707A225CB5FB90037599D /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 		6CF5491D25C641F60042534E /* Emitters */ = {
 			isa = PBXGroup;
 			children = (
+				6C9B047625CB5C260018F49F /* HintGlow.sks */,
+				6C9B047725CB5C260018F49F /* Assets.xcassets */,
+				6CF707A225CB5FB90037599D /* Magic.sks */,
 			);
 			path = Emitters;
 			sourceTree = "<group>";
@@ -248,8 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CF5491325C641E10042534E /* Main.storyboard in Resources */,
+				6CF707A325CB5FB90037599D /* Magic.sks in Resources */,
 				6CF5490A25C641E10042534E /* GameScene.sks in Resources */,
 				6CF5491525C641E20042534E /* Assets.xcassets in Resources */,
+				6C9B047825CB5C260018F49F /* HintGlow.sks in Resources */,
+				6C9B047925CB5C260018F49F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
