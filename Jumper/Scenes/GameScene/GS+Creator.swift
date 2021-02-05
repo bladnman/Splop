@@ -9,15 +9,43 @@ import SpriteKit
 
 extension GameScene {
   func setup() {
-    createMapNode() // first
+    createWorldLayer()
+    loadSceneFile(sceneName: sceneName)
     createWorld()
     createSplop()
   }
   
+  func createWorldLayer() {
+    worldLayer = Layer()
+    worldLayer.zPosition = C_ZPOS.world
+    addChild(worldLayer)
+  }
+  
+  func loadSceneFile(sceneName: String) {
+    if let sceneNode = SKNode.unarchiveFromFile(file: sceneName) {
+      worldLayer.addChild(sceneNode) // so we can see the scene from the SKS
+      loadTileMap(sceneNode)
+    }
+  }
+  func loadTileMap(_ sceneNode: SKNode) {
+    if let groundTiles = sceneNode.childNode(withName: C_OBJ_NAME.mapNode) as? SKTileMapNode {
+      self.tileMap = groundTiles
+//      tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
+//      PhysicsHelper.addPhysicsBody(to: groundTiles, with: "ground")
+//      for child in groundTiles.children {
+//        if let sprite = child as? SKSpriteNode, sprite.name != nil {
+//          ObjectHelper.handleChild(sprite: sprite, with: sprite.name!)
+//        }
+//      }
+    }
+    
+  }
+  
+
   func createSplop() {
     let splop = Splop(color: UIColor.red, size: CGSize(width: 50, height: 50))
     splop.name = C_OBJ_NAME.splop
-    splop.position = CGPoint(x: 100, y: 100)
+    splop.position = CGPoint(x: 200, y: 200)
     splop.setScale(0.75)
     splop.physicsBody = SKPhysicsBody(rectangleOf: splop.frame.size)
     splop.physicsBody?.isDynamic = true
@@ -27,15 +55,14 @@ extension GameScene {
     splop.physicsBody?.restitution = 0.0
     splop.physicsBody?.allowsRotation = false
     splop.zPosition = C_ZPOS.splop
-    self.addChild(splop)
-    
+    worldLayer.addChild(splop)
     self.splop = splop
   }
 
   func createPlatforms() {
 //    let platforms = self.children.filter { $0.name == "platform" }
     
-    self.enumerateChildNodes(withName: "platform") {
+    worldLayer.enumerateChildNodes(withName: "platform") {
       platform, _ in
       platform.name = C_OBJ_NAME.platform
       platform.physicsBody?.categoryBitMask = C_PHY_CAT.ground
@@ -48,9 +75,9 @@ extension GameScene {
     self.createPlatforms()
 
     self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-//    self.physicsBody?.contactTestBitMask = C_PHY_CAT.splop
     self.physicsBody?.restitution = 0.0
     self.physicsBody?.categoryBitMask = C_PHY_CAT.frame
+    //    self.physicsBody?.contactTestBitMask = C_PHY_CAT.splop
 
     func handleInteractionToggle(_: String) {
       tossType = (tossType == TossType.flick) ? TossType.snap : TossType.flick
@@ -59,12 +86,6 @@ extension GameScene {
     let interactionTypeButton = SpriteKitButton(defaultButtonImageNamed: "EmptyButton", onPress: handleInteractionToggle, buttonKey: "interactionTypeButton")
     interactionTypeButton.scaleToWidth(frame.width * 0.05)
     interactionTypeButton.position = CGPoint(x: frame.width - interactionTypeButton.size.width, y: frame.height - interactionTypeButton.size.height)
-    self.addChild(interactionTypeButton)
-  }
-  
-  func createMapNode() {
-    self.mapNode = (self.childNode(withName: C_OBJ_NAME.mapNode) as! SKTileMapNode)
-    self.mapNode?.zPosition = C_ZPOS.world
-    
+    worldLayer.addChild(interactionTypeButton)
   }
 }

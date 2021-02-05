@@ -14,15 +14,30 @@ enum TossType {
 
 class GameScene: SKScene {
   
-  var splop: Splop?
-  var mapNode: SKTileMapNode?
+  var splop: Splop!
+  var worldLayer: Layer!
+  var backgroundLayer: RepeatingLayer!
+  var tileMap: SKNode!
+  
   var tossIndicatorNode: SKNode?
   var tossIndicatorDot: SKShapeNode?
   var firstTouchPosition: CGPoint?
   var lastTouchPosition: CGPoint?
   var tossType = TossType.flick
+  var sceneName: String
+  var sceneManagerDelegate: SceneManagerDelegate?
     
-  // MARK: DID MOVE
+
+  init(size: CGSize, sceneName: String, sceneManagerDelegate: SceneManagerDelegate) {
+    self.sceneName = sceneName
+    self.sceneManagerDelegate = sceneManagerDelegate
+    super.init(size: size)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
 
   override func didMove(to view: SKView) {
     setup()

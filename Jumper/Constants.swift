@@ -9,7 +9,11 @@
 import CoreGraphics
 import Foundation
 
+//static let C_SCENE = "GameScene"
+let C_SCENE = "PlatformPlayground"
+
 struct Constants {
+  
   struct Objects {
     enum Names {
       static let splop = "splop"
@@ -56,3 +60,4 @@ typealias C_OBJ_NAME = Constants.Objects.Names
 typealias C_PHY_CAT = Constants.Physics.Categories
 typealias C_ZPOS = Constants.ZPositions
 typealias C_ANIS = Constants.Anis
+

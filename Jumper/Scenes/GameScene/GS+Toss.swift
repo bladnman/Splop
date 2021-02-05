@@ -11,14 +11,22 @@ extension GameScene {
   // MARK: Toss Indicator
 
   func getTossVector(with firstTouchPosition: CGPoint, and finalTouchPosition: CGPoint) -> CGVector {
+    let xMax: CGFloat = 100
+    let xMin: CGFloat = xMax * -1
+    let yMax: CGFloat = 300
+    let yMin: CGFloat = yMax * -1
     var multiplier = CGFloat(12.0)
-    
+
     if tossType == .snap {
       multiplier *= -1
     }
-    
-    let vector = CGVector(dx: (finalTouchPosition.x - firstTouchPosition.x) * multiplier,
-                          dy: (finalTouchPosition.y - firstTouchPosition.y) * multiplier)
+
+    let dxTouch = (finalTouchPosition.x - firstTouchPosition.x)
+    let dyTouch = (finalTouchPosition.y - firstTouchPosition.y)
+    let dx: CGFloat = max(xMin, min(xMax, dxTouch)) * multiplier
+    let dy: CGFloat = max(yMin, min(yMax, dyTouch)) * multiplier
+
+    let vector = CGVector(dx: dx, dy: dy)
     return vector
   }
 
@@ -29,7 +37,7 @@ extension GameScene {
     if firstTouchPosition == nil || lastTouchPosition == nil {
       return
     }
-    
+
     if let splop = self.splop {
       let tossVector = getTossVector(with: firstTouchPosition!, and: lastTouchPosition!)
       toss(node: splop, along: tossVector)
@@ -41,14 +49,14 @@ extension GameScene {
     if firstTouchPosition == nil || lastTouchPosition == nil {
       return
     }
-    
+
     if let splop = self.splop {
       let tossVector = getTossVector(with: firstTouchPosition!, and: lastTouchPosition!)
       let node = splop.copy() as! SKSpriteNode
       node.name = "hint"
       node.physicsBody?.contactTestBitMask = C_PHY_CAT.none
       node.removeAllChildren()
-      
+
       node.color = .clear
 //      let outline = SKShapeNode(rect: CGRect(x: 0, y: 0, width: node.frame.width, height: node.frame.height))
       let outline = SKShapeNode(circleOfRadius: 4)
@@ -56,14 +64,14 @@ extension GameScene {
 //      outline.strokeColor = .white
 //      outline.lineWidth = 2.0
       node.addChild(outline)
-      
+
       addChild(node)
-      
+
 //      outline.alpha = 0.0
 //      if let particles = SKEmitterNode(fileNamed: "Magic.sks") {
 //        node.addChild(particles)
 //      }
-      
+
       toss(node: node, along: tossVector)
       node.run(SKAction.fadeOut(withDuration: 0.8)) {
         node.removeFromParent()
@@ -82,7 +90,7 @@ extension GameScene {
     if firstTouchPosition == nil || lastTouchPosition == nil {
       removeTossIndicator()
     }
-    
+
     // show toss indicator
     else {
       let tossVector = getTossVector(with: firstTouchPosition!, and: lastTouchPosition!)

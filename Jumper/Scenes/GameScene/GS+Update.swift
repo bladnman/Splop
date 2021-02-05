@@ -11,9 +11,9 @@ extension GameScene {
   // MARK: UPDATE
 
   override func update(_ currentTime: TimeInterval) {
-    if splop != nil, mapNode != nil {
+    if splop != nil, tileMap != nil {
       let maxX: CGFloat = 0
-      let minX: CGFloat = (mapNode!.mapSize.width - self.frame.width) * -1
+      let minX: CGFloat = (tileMap!.frame.width - self.frame.width) * -1
       let edgeThreshold = 100
       let leftDistance: CGFloat = splop!.position.x
       let rightDistance: CGFloat = frame.width - splop!.position.x
@@ -30,19 +30,19 @@ extension GameScene {
       }
       
       if toMove != 0.0 {
-        var newMapX = mapNode!.position.x + toMove
+        var newMapX = tileMap!.position.x + toMove
         newMapX = max(min(newMapX, maxX), minX)
-        mapNode!.position = CGPoint(x: newMapX, y: mapNode!.position.y)
+        tileMap!.position = CGPoint(x: newMapX, y: tileMap!.position.y)
         splop!.position = CGPoint(x: splop!.position.x + toMove, y: splop!.position.y)
       }
     }
   }
   
   func isAtRightEdge() -> Bool {
-    return mapNode!.position.x + mapNode!.mapSize.width <= frame.width
+    return tileMap!.position.x + tileMap!.frame.width <= frame.width
   }
 
   func isAtLeftEdge() -> Bool {
-    return mapNode!.position.x >= 0
+    return tileMap!.position.x >= 0
   }
 }
