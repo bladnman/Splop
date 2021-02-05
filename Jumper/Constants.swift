@@ -14,6 +14,7 @@ struct Constants {
     enum Names {
       static let splop = "splop"
       static let platform = "platform"
+      static let mapNode = "mapNode"
     }
   }
   
@@ -27,12 +28,17 @@ struct Constants {
     }
   }
   enum ZPositions {
-    static let farBGZ: CGFloat = 0
-    static let closeBGZ: CGFloat = 1
-    static let worldZ: CGFloat = 2
-    static let objectZ: CGFloat = 3
-    static let playerZ: CGFloat = 4
-    static let hudZ: CGFloat = 5
+    // backgrounds
+    static let farBG: CGFloat = 10
+    static let closeBG: CGFloat = 11
+    
+    // world
+    static let world: CGFloat = 20
+    static let object: CGFloat = 21
+    static let splop: CGFloat = 26
+    
+    // hud
+    static let hud: CGFloat = 100
   }
   struct Anis {
     struct Player {

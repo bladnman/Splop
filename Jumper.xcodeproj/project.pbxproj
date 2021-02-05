@@ -20,6 +20,7 @@
 		6C778B6E25C64449003565BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C778B6D25C64449003565BF /* Constants.swift */; };
 		6C9B047825CB5C260018F49F /* HintGlow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047625CB5C260018F49F /* HintGlow.sks */; };
 		6C9B047925CB5C260018F49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047725CB5C260018F49F /* Assets.xcassets */; };
+		6CC1C76F25CCC17D00672D3A /* Sample Ground Tile Set.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CC1C76E25CCC17D00672D3A /* Sample Ground Tile Set.sks */; };
 		6CF5490825C641E10042534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490725C641E10042534E /* AppDelegate.swift */; };
 		6CF5490A25C641E10042534E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5490925C641E10042534E /* GameScene.sks */; };
 		6CF5490E25C641E10042534E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490D25C641E10042534E /* GameScene.swift */; };
@@ -43,6 +44,7 @@
 		6C778B7125C644BF003565BF /* PhysicsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsHelper.swift; sourceTree = "<group>"; };
 		6C9B047625CB5C260018F49F /* HintGlow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HintGlow.sks; sourceTree = "<group>"; };
 		6C9B047725CB5C260018F49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6CC1C76E25CCC17D00672D3A /* Sample Ground Tile Set.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Sample Ground Tile Set.sks"; sourceTree = "<group>"; };
 		6CF5490425C641E10042534E /* Jumper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF5490725C641E10042534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CF5490925C641E10042534E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		6CF5491425C641E20042534E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CF5491625C641E20042534E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CF707A225CB5FB90037599D /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		6CF707A525CB7B5F0037599D /* GameSceneSimple.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneSimple.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,7 @@
 		6CF5492225C6423E0042534E /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				6CC1C76E25CCC17D00672D3A /* Sample Ground Tile Set.sks */,
 			);
 			path = Tiles;
 			sourceTree = "<group>";
@@ -194,6 +198,7 @@
 		6CF5492825C642FD0042534E /* SKS */ = {
 			isa = PBXGroup;
 			children = (
+				6CF707A525CB7B5F0037599D /* GameSceneSimple.sks */,
 				6CF5490925C641E10042534E /* GameScene.sks */,
 			);
 			path = SKS;
@@ -260,6 +265,7 @@
 				6CF707A325CB5FB90037599D /* Magic.sks in Resources */,
 				6CF5490A25C641E10042534E /* GameScene.sks in Resources */,
 				6CF5491525C641E20042534E /* Assets.xcassets in Resources */,
+				6CC1C76F25CCC17D00672D3A /* Sample Ground Tile Set.sks in Resources */,
 				6C9B047825CB5C260018F49F /* HintGlow.sks in Resources */,
 				6C9B047925CB5C260018F49F /* Assets.xcassets in Resources */,
 			);
