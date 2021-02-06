@@ -8,16 +8,6 @@
 import SpriteKit
 
 
-public func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
-  return CGPoint(x: point.x * scalar, y: point.y * scalar)
-}
-public func + (left: CGPoint, right: CGPoint) -> CGPoint {
-  return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-public func += (left: inout CGPoint, right: CGPoint) {
-  left = left + right
-}
-
 class Layer: SKNode {
   
   func update(_ delta: TimeInterval) {

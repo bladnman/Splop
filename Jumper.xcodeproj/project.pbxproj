@@ -25,6 +25,7 @@
 		6CC1C77C25CE009D00672D3A /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC1C77B25CE009D00672D3A /* SceneManagerDelegate.swift */; };
 		6CC1C78125CE053800672D3A /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC1C77F25CE053800672D3A /* Layer.swift */; };
 		6CC1C78225CE053800672D3A /* RepeatingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC1C78025CE053800672D3A /* RepeatingLayer.swift */; };
+		6CC1C78625CEE6EC00672D3A /* CGMath+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC1C78525CEE6EB00672D3A /* CGMath+Extensions.swift */; };
 		6CF5490825C641E10042534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490725C641E10042534E /* AppDelegate.swift */; };
 		6CF5490A25C641E10042534E /* TestLevels.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5490925C641E10042534E /* TestLevels.sks */; };
 		6CF5490E25C641E10042534E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5490D25C641E10042534E /* GameScene.swift */; };
@@ -53,6 +54,7 @@
 		6CC1C77B25CE009D00672D3A /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		6CC1C77F25CE053800672D3A /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		6CC1C78025CE053800672D3A /* RepeatingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatingLayer.swift; sourceTree = "<group>"; };
+		6CC1C78525CEE6EB00672D3A /* CGMath+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGMath+Extensions.swift"; sourceTree = "<group>"; };
 		6CF5490425C641E10042534E /* Jumper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF5490725C641E10042534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CF5490925C641E10042534E /* TestLevels.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestLevels.sks; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		6CF5492325C642430042534E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6CC1C78525CEE6EB00672D3A /* CGMath+Extensions.swift */,
 				6C50E51A25C7188500C2422C /* SKNode+Extensions.swift */,
 			);
 			path = Extensions;
@@ -312,6 +315,7 @@
 				6C50E4FF25C64F1100C2422C /* AnimationHelper.swift in Sources */,
 				6CF5491025C641E10042534E /* GameViewController.swift in Sources */,
 				6C1276DF25C7308D003B09F2 /* SKNode+Extensions.swift in Sources */,
+				6CC1C78625CEE6EC00672D3A /* CGMath+Extensions.swift in Sources */,
 				6CC1C78225CE053800672D3A /* RepeatingLayer.swift in Sources */,
 				6CC1C77C25CE009D00672D3A /* SceneManagerDelegate.swift in Sources */,
 				6CF5490825C641E10042534E /* AppDelegate.swift in Sources */,

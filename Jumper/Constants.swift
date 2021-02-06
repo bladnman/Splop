@@ -11,6 +11,8 @@ import Foundation
 
 //static let C_SCENE = "GameScene"
 let C_SCENE = "PlatformPlayground"
+//let C_SCALE: CGFloat = 1.0
+let C_SCALE: CGFloat = 0.5
 
 struct Constants {
   
@@ -29,6 +31,9 @@ struct Constants {
       static let ground: UInt32 = 0x1 << 1
       static let frame: UInt32 = 0x1 << 2
       static let all = UInt32.max
+    }
+    enum Mass {
+      static let splop: CGFloat = 0.1
     }
   }
   enum ZPositions {
@@ -52,12 +57,23 @@ struct Constants {
       }
     }
   }
-
+  struct Movement {
+    struct Input {
+      static let multiplier: CGFloat = 18.0
+    }
+    struct Toss {
+      static let xMax: CGFloat = 75
+      static let yMax: CGFloat = 300
+    }
+    
+  }
 }
 
 typealias C = Constants
 typealias C_OBJ_NAME = Constants.Objects.Names
 typealias C_PHY_CAT = Constants.Physics.Categories
+typealias C_PHY_MASS = Constants.Physics.Mass
 typealias C_ZPOS = Constants.ZPositions
 typealias C_ANIS = Constants.Anis
+typealias C_MOVE = Constants.Movement
 
