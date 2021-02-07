@@ -22,6 +22,23 @@ struct Constants {
       static let platform = "platform"
       static let mapNode = "mapNode"
       static let worldNode = "worldNode"
+      static let startPoint = "startPoint"
+    }
+    enum Types: String {
+      case none
+      case solid
+      case ground
+      case platform
+      case ceiling
+      // TODO: may not care about these
+      case platform_right
+      case platform_left
+    }
+    enum Surfaces: String {
+      case none
+      case standard
+      case ice
+      case blocking
     }
   }
   
@@ -72,6 +89,8 @@ struct Constants {
 
 typealias C = Constants
 typealias C_OBJ_NAME = Constants.Objects.Names
+typealias C_OBJ_TYPE = Constants.Objects.Types
+typealias C_OBJ_SURF = Constants.Objects.Surfaces
 typealias C_PHY_CAT = Constants.Physics.Categories
 typealias C_PHY_MASS = Constants.Physics.Mass
 typealias C_ZPOS = Constants.ZPositions

@@ -9,45 +9,28 @@ import SpriteKit
 
 extension GameScene {
   func setup() {
-    // add tile map
-    loadSceneFile(sceneName: sceneName)
+    // create the scene first
+    createScene()
+    
+    // create the hud
+    // createHud()
 
-    // add splop
+    // then add splop
     createSplop()
 
-    // set world layer properties
-    self.scaleMode = SKSceneScaleMode.aspectFill;
+    // and finally set any other world layer properties
     self.size *= 1 / C_SCALE
-    self.sceneWidth = max(frame.width, tileMap.frame.width)
+    self.sceneWidth = max(frame.width, tileMap?.frame.width ?? 0)
   }
+  
+  
+  // MARK: HUD INSTALLERS
 
-  func loadSceneFile(sceneName: String) {
-    if let sceneFile = SKNode.unarchiveFromFile(file: sceneName) {
-      worldNode = sceneFile.childNode(withName: C_OBJ_NAME.worldNode)
-      worldNode.move(toParent: self)
-      worldNode.isPaused = false // wait, why would this default to paused exactly?! grr
-      loadTileMap(worldNode)
-    }
-    installScene()
-  }
-
-  func loadTileMap(_ sceneNode: SKNode) {
-    if let groundTiles = sceneNode.childNode(withName: C_OBJ_NAME.mapNode) as? SKTileMapNode {
-      self.tileMap = groundTiles
-//      tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
-//      PhysicsHelper.addPhysicsBody(to: groundTiles, with: "ground")
-//      for child in groundTiles.children {
-//        if let sprite = child as? SKSpriteNode, sprite.name != nil {
-//          ObjectHelper.handleChild(sprite: sprite, with: sprite.name!)
-//        }
-//      }
-    }
-  }
-
+  
+  // MARK: CHARACTER INSTALLERS
   func createSplop() {
     splop = Splop(color: UIColor.red, size: CGSize(width: 32, height: 32))
     splop.name = C_OBJ_NAME.splop
-    splop.position = CGPoint(x: 200, y: 200)
     splop.physicsBody = SKPhysicsBody(rectangleOf: splop.frame.size)
     splop.physicsBody?.isDynamic = true
     splop.physicsBody?.categoryBitMask = C_PHY_CAT.splop
@@ -58,30 +41,78 @@ extension GameScene {
     splop.physicsBody?.mass = C_PHY_MASS.splop
     splop.zPosition = C_ZPOS.splop
     worldNode.addChild(splop)
+    
+    // position splop
+    let startPoint = worldNode.childNode(withName: C_OBJ_NAME.startPoint) as! SKReferenceNode
+    splop.position = startPoint.position
+    
   }
 
-  func installScene() {
-    installSceneFurniture()
+  
+  // MARK: SCENE INSTALLERS
+  func createScene() {
+    
+    // add scene file (gives us worldNode)
+    installSceneFile(sceneName: sceneName)
+    
+    // add tile map
+    createTileMap()
+    
+    // create frame physics
+    createFrame()
+    
+    // install all the non tile-map elements
+    createFurniture()
 
-    tileMap.physicsBody = SKPhysicsBody(edgeLoopFrom: tileMap.frame)
-    tileMap.physicsBody?.restitution = 0.0
-    tileMap.physicsBody?.categoryBitMask = C_PHY_CAT.frame
-
-    func handleInteractionToggle(_: String) {
-      tossType = (tossType == TossType.flick) ? TossType.snap : TossType.flick
-      print("button pressed \(tossType)")
+  }
+  
+  func installSceneFile(sceneName: String) {
+    if let sceneFile = SKNode.unarchiveFromFile(file: sceneName) {
+      worldNode = sceneFile.childNode(withName: C_OBJ_NAME.worldNode)
+      worldNode.isPaused = false // wait, why would this default to paused exactly?! grr
+      
+      // ADD SCENE TO SELF
+      worldNode.move(toParent: self)
     }
-    let interactionTypeButton = SpriteKitButton(defaultButtonImageNamed: "EmptyButton", onPress: handleInteractionToggle, buttonKey: "interactionTypeButton")
-    interactionTypeButton.scaleToWidth(frame.width * 0.05)
-    interactionTypeButton.position = CGPoint(x: frame.width - interactionTypeButton.size.width, y: frame.height - interactionTypeButton.size.height)
-    worldNode.addChild(interactionTypeButton)
   }
-
-  func installSceneFurniture() {
-    worldNode.enumerateChildNodes(withName: "platform") {
-      platform, _ in
-      platform.name = C_OBJ_NAME.platform
-      platform.physicsBody?.categoryBitMask = C_PHY_CAT.ground
+  
+  func createTileMap() {
+    // find tilemap
+    // TODO: would be nice to be _able_ to have more than 1 tileMap
+    if let groundTiles = worldNode.childNode(withName: C_OBJ_NAME.mapNode) as? SKTileMapNode {
+      self.tileMap = groundTiles
+    }
+  }
+  
+  func createFrame() {
+    let frameNode = self.tileMap ?? self
+    
+    self.physicsBody = SKPhysicsBody(edgeLoopFrom: frameNode.frame)
+    self.physicsBody?.restitution = 0.0
+    self.physicsBody?.categoryBitMask = C_PHY_CAT.frame
+  }
+  
+  func createFurniture() {
+    installFurnature(inNode: worldNode)
+  }
+  func installFurnature(inNode parentNode: SKNode?) {
+    if parentNode == nil { return }
+    for node in parentNode!.children {
+      
+      // TILE MAPS - install furnature in them
+      if node is SKTileMapNode {
+        installFurnature(inNode: node)
+      }
+      
+      // SPRITE NODES
+      else if node is SKSpriteNode {
+        PhysicsHelper.addPhysicsBody(to: node as! SKSpriteNode)
+      }
+      
+      // OTHERS
+      else {
+        print("[M@] [\(node.name ?? "no name node")] doing nothing with him")
+      }
     }
   }
 }

@@ -18,7 +18,7 @@ class GameScene: SKScene {
   var worldLayer: Layer!
   var worldNode: SKNode!
   var backgroundLayer: RepeatingLayer!
-  var tileMap: SKNode!
+  var tileMap: SKNode?
   
   var sceneWidth: CGFloat!
   
