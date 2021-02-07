@@ -14,7 +14,7 @@ extension GameScene {
     firstTouchPosition = touches.first?.location(in: self)
     updateTossIndicator()
     let hintAni = SKAction.sequence([
-      SKAction.run(tossHint), SKAction.wait(forDuration: 0.05)
+      SKAction.run(tossHint), SKAction.wait(forDuration: 0.2)
     ])
     self.run(SKAction.repeatForever(hintAni))
   }

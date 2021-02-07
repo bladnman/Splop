@@ -9,11 +9,6 @@ import SpriteKit
 
 extension GameScene {
   func setup() {
-    // add world layer
-    worldLayer = Layer()
-    worldLayer.zPosition = C_ZPOS.world
-    addChild(worldLayer)
-
     // add tile map
     loadSceneFile(sceneName: sceneName)
 
@@ -23,19 +18,22 @@ extension GameScene {
     // set world layer properties
     self.scaleMode = SKSceneScaleMode.aspectFill;
     self.size *= 1 / C_SCALE
+    self.sceneWidth = max(frame.width, tileMap.frame.width)
   }
 
   func loadSceneFile(sceneName: String) {
-    if let sceneNode = SKNode.unarchiveFromFile(file: sceneName) {
-      worldLayer.addChild(sceneNode) // so we can see the scene from the SKS
-      loadTileMap(sceneNode)
+    if let sceneFile = SKNode.unarchiveFromFile(file: sceneName) {
+      worldNode = sceneFile.childNode(withName: C_OBJ_NAME.worldNode)
+      worldNode.move(toParent: self)
+      worldNode.isPaused = false // wait, why would this default to paused exactly?! grr
+      loadTileMap(worldNode)
     }
     installScene()
   }
 
   func loadTileMap(_ sceneNode: SKNode) {
     if let groundTiles = sceneNode.childNode(withName: C_OBJ_NAME.mapNode) as? SKTileMapNode {
-      tileMap = groundTiles
+      self.tileMap = groundTiles
 //      tileMap.scale(to: frame.size, width: false, multiplier: 1.0)
 //      PhysicsHelper.addPhysicsBody(to: groundTiles, with: "ground")
 //      for child in groundTiles.children {
@@ -59,7 +57,7 @@ extension GameScene {
     splop.physicsBody?.allowsRotation = false
     splop.physicsBody?.mass = C_PHY_MASS.splop
     splop.zPosition = C_ZPOS.splop
-    worldLayer.addChild(splop)
+    worldNode.addChild(splop)
   }
 
   func installScene() {
@@ -76,15 +74,14 @@ extension GameScene {
     let interactionTypeButton = SpriteKitButton(defaultButtonImageNamed: "EmptyButton", onPress: handleInteractionToggle, buttonKey: "interactionTypeButton")
     interactionTypeButton.scaleToWidth(frame.width * 0.05)
     interactionTypeButton.position = CGPoint(x: frame.width - interactionTypeButton.size.width, y: frame.height - interactionTypeButton.size.height)
-    worldLayer.addChild(interactionTypeButton)
+    worldNode.addChild(interactionTypeButton)
   }
 
   func installSceneFurniture() {
-    worldLayer.enumerateChildNodes(withName: "platform") {
+    worldNode.enumerateChildNodes(withName: "platform") {
       platform, _ in
       platform.name = C_OBJ_NAME.platform
       platform.physicsBody?.categoryBitMask = C_PHY_CAT.ground
-      print("node \(platform)")
     }
   }
 }

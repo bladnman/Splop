@@ -16,13 +16,17 @@ class GameScene: SKScene {
   
   var splop: Splop!
   var worldLayer: Layer!
+  var worldNode: SKNode!
   var backgroundLayer: RepeatingLayer!
   var tileMap: SKNode!
+  
+  var sceneWidth: CGFloat!
   
   var tossIndicatorNode: SKNode?
   var tossIndicatorDot: SKShapeNode?
   var firstTouchPosition: CGPoint?
   var lastTouchPosition: CGPoint?
+  
   var tossType = TossType.flick
   var sceneName: String
   var sceneManagerDelegate: SceneManagerDelegate?

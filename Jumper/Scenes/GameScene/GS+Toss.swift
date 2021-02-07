@@ -27,7 +27,7 @@ extension GameScene {
     let dy: CGFloat = max(yMin, min(yMax, dyTouch)) * multiplier
 
     let vector = CGVector(dx: dx, dy: dy)
-    
+
     // scale vector to worldLayer scale
 //    return vector * C_SCALE
 //    let forceScale = splop.physicsBody!.mass / C_PHY_MASS.splop
@@ -54,18 +54,18 @@ extension GameScene {
 
     let tossVector = getTossVector(with: firstTouchPosition!, and: lastTouchPosition!)
     let hintNode = splop.copy() as! SKSpriteNode
-    
+
     hintNode.name = "hint"
     hintNode.physicsBody?.contactTestBitMask = C_PHY_CAT.none
     hintNode.physicsBody?.mass = C_PHY_MASS.splop
     hintNode.removeAllChildren()
     hintNode.color = .clear
-    
+
     let hintIndicator = SKShapeNode(circleOfRadius: 4)
     hintIndicator.fillColor = .white
     hintNode.addChild(hintIndicator)
 
-    worldLayer.addChild(hintNode)
+    worldNode.addChild(hintNode)
 
     toss(node: hintNode, along: tossVector)
     hintNode.run(SKAction.fadeOut(withDuration: 0.8)) {

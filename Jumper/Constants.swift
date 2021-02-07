@@ -11,8 +11,8 @@ import Foundation
 
 //static let C_SCENE = "GameScene"
 let C_SCENE = "PlatformPlayground"
-//let C_SCALE: CGFloat = 1.0
-let C_SCALE: CGFloat = 0.5
+let C_SCALE: CGFloat = 1.0
+//let C_SCALE: CGFloat = 0.5
 
 struct Constants {
   
@@ -21,6 +21,7 @@ struct Constants {
       static let splop = "splop"
       static let platform = "platform"
       static let mapNode = "mapNode"
+      static let worldNode = "worldNode"
     }
   }
   

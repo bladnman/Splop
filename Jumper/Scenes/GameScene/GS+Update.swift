@@ -8,41 +8,39 @@
 import SpriteKit
 
 extension GameScene {
-  // MARK: UPDATE
-
   override func update(_ currentTime: TimeInterval) {
-    if splop != nil, tileMap != nil {
+    if splop != nil, worldNode != nil {
       let maxX: CGFloat = 0
-      let minX: CGFloat = (tileMap!.frame.width - self.frame.width) * -1
-      let edgeThreshold = 100
-      let leftDistance: CGFloat = splop!.position.x
-      let rightDistance: CGFloat = frame.width - splop!.position.x
+      let minX: CGFloat = (sceneWidth - frame.width) * -1
+      let edgeThreshold: CGFloat = 100
+      let splotFrameX: CGFloat = splop.position.x + worldNode.position.x
+      let leftDistanceFromFrame: CGFloat = splotFrameX
+      let rightDistanceFromFrame: CGFloat = frame.width - splotFrameX
       var toMove: CGFloat = 0.0
-      
+
       // too far right
-      if rightDistance < CGFloat(edgeThreshold), !isAtRightEdge() {
-        toMove = rightDistance - CGFloat(edgeThreshold)
+      if rightDistanceFromFrame < edgeThreshold, !isAtRightEdge() {
+        toMove = rightDistanceFromFrame - edgeThreshold
       }
 
       // too far left
-      else if leftDistance < CGFloat(edgeThreshold), !isAtLeftEdge() {
-        toMove = CGFloat(edgeThreshold) - leftDistance
+      else if leftDistanceFromFrame < edgeThreshold, !isAtLeftEdge() {
+        toMove = edgeThreshold - leftDistanceFromFrame
       }
-      
+
       if toMove != 0.0 {
-        var newMapX = tileMap!.position.x + toMove
+        var newMapX = worldNode.position.x + toMove
         newMapX = max(min(newMapX, maxX), minX)
-        tileMap!.position = CGPoint(x: newMapX, y: tileMap!.position.y)
-        splop!.position = CGPoint(x: splop!.position.x + toMove, y: splop!.position.y)
+        worldNode.position = CGPoint(x: newMapX, y: worldNode.position.y)
       }
     }
   }
-  
+
   func isAtRightEdge() -> Bool {
-    return tileMap!.position.x + tileMap!.frame.width <= frame.width
+    return worldNode!.position.x + sceneWidth <= frame.width
   }
 
   func isAtLeftEdge() -> Bool {
-    return tileMap!.position.x >= 0
+    return worldNode!.position.x >= 0
   }
 }
