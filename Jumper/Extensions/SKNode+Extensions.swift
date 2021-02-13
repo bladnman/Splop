@@ -60,4 +60,19 @@ extension SKNode {
     
     userData!.setValue(entry, forKey: key)
   }
+  
+//  var surfaceDef: SurfaceDef? {
+//    get {
+//      return userData?["surfaceDef"] as? SurfaceDef
+//    }
+//    set {
+//      if newValue == nil {
+//        if userData != nil {
+//          userData?.removeObject(forKey: "surfaceDef")
+//        }
+//      } else {
+//        createUserData(entry: newValue!, forKey: "surfaceDef")
+//      }
+//    }
+//  }
 }

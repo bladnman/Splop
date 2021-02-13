@@ -9,16 +9,29 @@ import SpriteKit
 
 extension GameScene: SKPhysicsContactDelegate {
   // MARK: PHYSICS
+
   func didBegin(_ contact: SKPhysicsContact) {
-    print("contact point \(contact.contactPoint)")
+    // off the gound
+    // temp... not to keep
     if contact.contactPoint.y > 5 {
-//      box?.physicsBody?.linearDamping = 10
-      splop?.physicsBody?.affectedByGravity = false
-      splop?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-    } else {
-//      splop?.physicsBody?.linearDamping = 0.1
+//      if MUtils.flipIsHeads() {
+//        splop?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+//        splop?.physicsBody?.linearDamping = 400
+//      }
+    }
+    
+    // on or below
+    // temp... not to keep
+    else {
+      splop?.physicsBody?.linearDamping = 0.1
       splop?.physicsBody?.affectedByGravity = true
     }
   }
 
+  func doPhysics(for splop: Splop, and furnature: SKSpriteNode) {
+    // noop
+  }
+  override func didSimulatePhysics() {
+    // noop
+  }
 }

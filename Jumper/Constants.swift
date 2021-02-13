@@ -19,26 +19,10 @@ struct Constants {
   struct Objects {
     enum Names {
       static let splop = "splop"
-      static let platform = "platform"
       static let mapNode = "mapNode"
       static let worldNode = "worldNode"
       static let startPoint = "startPoint"
-    }
-    enum Types: String {
-      case none
-      case solid
-      case ground
-      case platform
-      case ceiling
-      // TODO: may not care about these
-      case platform_right
-      case platform_left
-    }
-    enum Surfaces: String {
-      case none
-      case standard
-      case ice
-      case blocking
+      static let furnature = "furnature"
     }
   }
   
@@ -46,12 +30,17 @@ struct Constants {
     enum Categories {
       static let none: UInt32 = 0
       static let splop: UInt32 = 0x1
-      static let ground: UInt32 = 0x1 << 1
-      static let frame: UInt32 = 0x1 << 2
+      static let frame: UInt32 = 0x1 << 1
+      static let ground: UInt32 = 0x1 << 2
+      static let furnature: UInt32 = 0x1 << 3
       static let all = UInt32.max
     }
     enum Mass {
       static let splop: CGFloat = 0.1
+    }
+    enum Defaults {
+      static let friction: CGFloat = 0.8
+      static let restitution: CGFloat = 0.2
     }
   }
   enum ZPositions {
@@ -89,8 +78,7 @@ struct Constants {
 
 typealias C = Constants
 typealias C_OBJ_NAME = Constants.Objects.Names
-typealias C_OBJ_TYPE = Constants.Objects.Types
-typealias C_OBJ_SURF = Constants.Objects.Surfaces
+typealias C_PHY = Constants.Physics
 typealias C_PHY_CAT = Constants.Physics.Categories
 typealias C_PHY_MASS = Constants.Physics.Mass
 typealias C_ZPOS = Constants.ZPositions
