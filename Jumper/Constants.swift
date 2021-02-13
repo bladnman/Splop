@@ -39,7 +39,7 @@ struct Constants {
       static let splop: CGFloat = 0.1
     }
     enum Defaults {
-      static let friction: CGFloat = 0.8
+      static let friction: CGFloat = 0.6
       static let restitution: CGFloat = 0.2
     }
   }

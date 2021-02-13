@@ -7,14 +7,8 @@
 
 import SpriteKit
 
-enum SurfaceTypes {
-  static let BOUNCY = Range<Int>(1...9)
-  static let SLIPPERY = Range<Int>(10...19)
-  static let STICKY = Range<Int>(20...29)
-}
-
-let DEFAULT_REST = CGFloat(0.2)
-let DEFAULT_FRIC = CGFloat(0.2)
+let DEFAULT_REST = C_PHY.Defaults.restitution
+let DEFAULT_FRIC = C_PHY.Defaults.friction
 
 class SurfaceDef: CustomStringConvertible, PropertyReflectable {
   var restTop: CGFloat = DEFAULT_REST
@@ -33,7 +27,8 @@ class SurfaceDef: CustomStringConvertible, PropertyReflectable {
     self.init()
     
     func getValFor(_ key: String, orDefault: CGFloat) -> CGFloat {
-      let val = userData?[key] as? CGFloat ?? orDefault
+      var val = userData?[key] as? CGFloat ?? orDefault
+      val = val.roundTo(places: 3)
       return val.clamped(to: 0.0...1.0)
     }
     
@@ -50,7 +45,10 @@ class SurfaceDef: CustomStringConvertible, PropertyReflectable {
     fricBottom = getValFor("fricB", orDefault: fric)
     fricLeft = getValFor("fricL", orDefault: fric)
     
-    // MARK : INVERSE ASSIGNMENT
+    // currently we do not set up inverse defaults
+    // setUpInverseDefaults()
+  }
+  private func setUpInverseDefaults() {
     // TOP
     if restTop == DEFAULT_REST && fricTop != DEFAULT_FRIC {
       restTop = 1.0 - fricTop
@@ -105,19 +103,32 @@ class SurfaceDef: CustomStringConvertible, PropertyReflectable {
       + "}"
   }
 
-  static func isBouncy(_ value: Int) -> Bool {
-    return SurfaceTypes.BOUNCY.contains(value)
+  static func isBouncy(_ value: CGFloat) -> Bool {
+    return value <= 0.3
   }
 
-  static func isSlippery(_ value: Int) -> Bool {
-    return SurfaceTypes.SLIPPERY.contains(value)
+  static func isSlippery(_ value: CGFloat) -> Bool {
+    return value <= 0.2
   }
 
-  static func isSticky(_ value: Int) -> Bool {
-    return SurfaceTypes.STICKY.contains(value)
+  static func isSticky(_ value: CGFloat) -> Bool {
+    return value >= 0.8
   }
-
-  static func isNormal(_ value: Int) -> Bool {
-    return value < 1 || value > 29
+  
+  
+  func isSticky(_ velNormal: CGVector) -> Bool {
+    return velNormal.dy < 0 && SurfaceDef.isSticky(fricTop) ||
+      velNormal.dx < 0 && SurfaceDef.isSticky(fricRight) ||
+      velNormal.dy > 0 && SurfaceDef.isSticky(fricBottom) ||
+      velNormal.dx > 0 && SurfaceDef.isSticky(fricLeft)
+  }
+  func isSticky(_ splopContact: SplopContact?) -> Bool {
+    if splopContact == nil {
+      return false
+    }
+    return splopContact!.isTopContact && SurfaceDef.isSticky(fricTop) ||
+      splopContact!.isRightContact && SurfaceDef.isSticky(fricRight) ||
+      splopContact!.isBottomContact && SurfaceDef.isSticky(fricBottom) ||
+      splopContact!.isLeftContact && SurfaceDef.isSticky(fricLeft)
   }
 }

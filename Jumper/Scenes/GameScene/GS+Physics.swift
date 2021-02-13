@@ -11,6 +11,18 @@ extension GameScene: SKPhysicsContactDelegate {
   // MARK: PHYSICS
 
   func didBegin(_ contact: SKPhysicsContact) {
+    // SPLOP CONTACT
+    if let splopContact = contact.splopContact {
+      
+      // STICKY
+      if splopContact.furnature.surfaceDef.isSticky(splopContact) {
+        splopContact.splop.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        splopContact.splop.physicsBody?.linearDamping = 400
+      }
+      
+    }
+
+    if contact.isSplopContact {}
     // off the gound
     // temp... not to keep
     if contact.contactPoint.y > 5 {
@@ -19,7 +31,7 @@ extension GameScene: SKPhysicsContactDelegate {
 //        splop?.physicsBody?.linearDamping = 400
 //      }
     }
-    
+
     // on or below
     // temp... not to keep
     else {
@@ -31,6 +43,7 @@ extension GameScene: SKPhysicsContactDelegate {
   func doPhysics(for splop: Splop, and furnature: SKSpriteNode) {
     // noop
   }
+
   override func didSimulatePhysics() {
     // noop
   }

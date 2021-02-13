@@ -28,3 +28,10 @@ public func += (left: inout CGPoint, right: CGPoint) {
 public func - (point1: CGPoint, point2: CGPoint) -> CGPoint {
   return CGPoint(x: point1.x - point2.x, y: point1.y - point2.y)
 }
+
+extension CGFloat {
+    func roundTo(places:Int) -> CGFloat {
+        let divisor = pow(10.0, CGFloat(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
