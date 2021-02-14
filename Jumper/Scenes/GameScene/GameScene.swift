@@ -21,6 +21,7 @@ class GameScene: SKScene {
   var tileMap: SKNode?
   
   var sceneWidth: CGFloat!
+  var sceneHeight: CGFloat!
   
   var tossIndicatorNode: SKNode?
   var tossIndicatorDot: SKShapeNode?

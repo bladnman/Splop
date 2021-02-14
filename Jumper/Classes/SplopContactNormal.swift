@@ -10,16 +10,26 @@ import SpriteKit
 class SplopContact {
   let normal: CGVector
   let splop: Splop
-  let furnature: FurnatureNode
+  private let bodyB: SKNode
   
-  var isTopContact: Bool { return normal.dy < 0 }
-  var isRightContact: Bool { return normal.dx < 0 }
-  var isBottomContact: Bool { return normal.dy > 0 }
-  var isLeftContact: Bool { return normal.dx > 0 }
+  var isTopContact: Bool { return splopWasTravelingDown }
+  var isRightContact: Bool { return splopWasTravelingLeft }
+  var isBottomContact: Bool { return splopWasTravelingUp }
+  var isLeftContact: Bool { return splopWasTravelingRight }
+
+  var splopWasTravelingDown: Bool { return normal.dy < 0 }
+  var splopWasTravelingLeft: Bool { return normal.dx < 0 }
+  var splopWasTravelingUp: Bool { return normal.dy > 0 }
+  var splopWasTravelingRight: Bool { return normal.dx > 0 }
+  var splopWasTravelingHorizonal: Bool { return splopWasTravelingLeft || splopWasTravelingRight }
   
-  init(_ contactNormal: CGVector, splop: Splop, furnature: FurnatureNode) {
+  var isFurnatureContact: Bool { return bodyB is FurnatureNode }
+  
+  var furnature: FurnatureNode? { return bodyB as? FurnatureNode }
+  
+  init(_ contactNormal: CGVector, splop: Splop, bodyB: SKNode) {
     self.normal = contactNormal
     self.splop = splop
-    self.furnature = furnature
+    self.bodyB = bodyB
   }
 }

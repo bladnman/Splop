@@ -115,13 +115,6 @@ class SurfaceDef: CustomStringConvertible, PropertyReflectable {
     return value >= 0.8
   }
   
-  
-  func isSticky(_ velNormal: CGVector) -> Bool {
-    return velNormal.dy < 0 && SurfaceDef.isSticky(fricTop) ||
-      velNormal.dx < 0 && SurfaceDef.isSticky(fricRight) ||
-      velNormal.dy > 0 && SurfaceDef.isSticky(fricBottom) ||
-      velNormal.dx > 0 && SurfaceDef.isSticky(fricLeft)
-  }
   func isSticky(_ splopContact: SplopContact?) -> Bool {
     if splopContact == nil {
       return false

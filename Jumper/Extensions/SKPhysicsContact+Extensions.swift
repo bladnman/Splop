@@ -30,8 +30,7 @@ extension SKPhysicsContact {
   }
   var isSplopContact: Bool {
     get {
-      return bodyAOrdered?.categoryBitMask == C_PHY_CAT.splop &&
-        bodyBOrdered?.categoryBitMask == C_PHY_CAT.furnature
+      return bodyAOrdered?.categoryBitMask == C_PHY_CAT.splop
     }
   }
   var bodySplop: SKPhysicsBody? {
@@ -54,6 +53,6 @@ extension SKPhysicsContact {
     }
     return SplopContact(splopContactNormal,
                         splop: bodySplop!.node as! Splop,
-                        furnature: bodyBOrdered!.node as! FurnatureNode)
+                        bodyB: bodyBOrdered!.node!)
   }
 }

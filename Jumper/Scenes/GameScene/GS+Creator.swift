@@ -21,6 +21,7 @@ extension GameScene {
     // and finally set any other world layer properties
     size *= 1 / C_SCALE
     sceneWidth = max(frame.width, tileMap?.frame.width ?? 0)
+    sceneHeight = max(frame.height, tileMap?.frame.height ?? 0)
   }
   
   // MARK: HUD INSTALLERS
@@ -111,17 +112,13 @@ extension GameScene {
         for row in 0..<tileMap.numberOfRows {
           for col in 0..<tileMap.numberOfColumns {
             let tileDefinition = tileMap.tileDefinition(atColumn: col, row: row)
-            let surfaceDef = SurfaceDef(tileDefinition?.userData)
-            
             // SKIP NODE -- nothing defined for surface
-            if surfaceDef.isDefault() {
+            if !userDataDefinesSurface(tileDefinition?.userData) {
               continue
             }
             
+            let surfaceDef = SurfaceDef(tileDefinition?.userData)
             let furnatureNode = FurnatureNode(size: tileSize, surfaceDef: surfaceDef)
-            
-            print("[M@] [\(surfaceDef)]")
-            
             let x = CGFloat(col) * tileSize.width + (tileSize.width / 2)
             let y = CGFloat(row) * tileSize.height + (tileSize.height / 2)
             furnatureNode.position = CGPoint(x: x, y: y)
@@ -134,6 +131,14 @@ extension GameScene {
         }
       }
     }
+  }
+
+  func userDataDefinesSurface(_ userData: NSMutableDictionary?) -> Bool {
+    guard let data = userData else { return false }
+    return data["rest"] != nil || data["restT"] != nil ||
+      data["restR"] != nil || data["restB"] != nil || data["restL"] != nil ||
+      data["fric"] != nil || data["fricT"] != nil ||
+      data["fricR"] != nil || data["fricB"] != nil || data["fricL"] != nil
   }
 
   func installFurnature(inNode parentNode: SKNode?) {

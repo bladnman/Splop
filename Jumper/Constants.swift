@@ -70,7 +70,7 @@ struct Constants {
     }
     struct Toss {
       static let xMax: CGFloat = 75
-      static let yMax: CGFloat = 300
+      static let yMax: CGFloat = 200
     }
     
   }

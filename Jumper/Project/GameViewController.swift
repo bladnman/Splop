@@ -22,7 +22,7 @@ class GameViewController: UIViewController, SceneManagerDelegate {
   func presentGameScene(named sceneName: String) {
     let scene = GameScene(size: view.bounds.size, sceneName: sceneName, sceneManagerDelegate: self)
     scene.scaleMode = .aspectFill
-    scene.size = view.bounds.size // is this still needed?
+//    scene.size = view.bounds.size // is this still needed?
     present(scene: scene)
   }
   func present(scene: SKScene) {

@@ -11,37 +11,28 @@ extension GameScene: SKPhysicsContactDelegate {
   // MARK: PHYSICS
 
   func didBegin(_ contact: SKPhysicsContact) {
-    // SPLOP CONTACT
-    if let splopContact = contact.splopContact {
-      
-      // STICKY
-      if splopContact.furnature.surfaceDef.isSticky(splopContact) {
-        splopContact.splop.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        splopContact.splop.physicsBody?.linearDamping = 400
-      }
-      
-    }
-
-    if contact.isSplopContact {}
-    // off the gound
-    // temp... not to keep
-    if contact.contactPoint.y > 5 {
-//      if MUtils.flipIsHeads() {
-//        splop?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-//        splop?.physicsBody?.linearDamping = 400
-//      }
-    }
-
-    // on or below
-    // temp... not to keep
-    else {
-      splop?.physicsBody?.linearDamping = 0.1
-      splop?.physicsBody?.affectedByGravity = true
-    }
+    handleSplopContacts(splopContact: contact.splopContact)
   }
 
-  func doPhysics(for splop: Splop, and furnature: SKSpriteNode) {
-    // noop
+  func handleSplopContacts(splopContact: SplopContact?) {
+    
+    guard let contact = splopContact else {
+      return
+    }
+
+    // FURNATURE CONTACT
+    if let furnature = contact.furnature {
+      // STICKY
+      if furnature.surfaceDef.isSticky(contact) && contact.splopWasTravelingHorizonal {
+        // slow gravity slide:
+//        contact.splop.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+//        contact.splop.physicsBody?.linearDamping = 400
+        
+        // managed, non-gravity drift
+        contact.splop.physicsBody?.velocity = CGVector(dx: 0, dy: -20)
+        contact.splop.physicsBody?.affectedByGravity = false
+      }
+    }
   }
 
   override func didSimulatePhysics() {
