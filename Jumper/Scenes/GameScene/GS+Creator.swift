@@ -20,6 +20,10 @@ extension GameScene {
 
     // and finally set any other world layer properties
     size *= 1 / C_SCALE
+    
+    setupSceneSize()
+  }
+  func setupSceneSize() {
     sceneWidth = max(frame.width, tileMap?.frame.width ?? 0)
     sceneHeight = max(frame.height, tileMap?.frame.height ?? 0)
   }

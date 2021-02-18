@@ -27,6 +27,7 @@
 		6C886D5F25D88C96001AD2D2 /* SplopContactNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C886D5E25D88C96001AD2D2 /* SplopContactNormal.swift */; };
 		6C8A269025D0427500CB73B9 /* ObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A268F25D0427500CB73B9 /* ObjectHelper.swift */; };
 		6C8A269625D06E6200CB73B9 /* SurfaceDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A269525D06E6200CB73B9 /* SurfaceDef.swift */; };
+		6C9A9ADD25DA19C2007FDE42 /* DeviceUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A9ADC25DA19C2007FDE42 /* DeviceUpdateDelegate.swift */; };
 		6C9B047825CB5C260018F49F /* HintGlow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047625CB5C260018F49F /* HintGlow.sks */; };
 		6C9B047925CB5C260018F49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9B047725CB5C260018F49F /* Assets.xcassets */; };
 		6CC1C76F25CCC17D00672D3A /* Sample Ground Tile Set.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6CC1C76E25CCC17D00672D3A /* Sample Ground Tile Set.sks */; };
@@ -65,6 +66,7 @@
 		6C886D5E25D88C96001AD2D2 /* SplopContactNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplopContactNormal.swift; sourceTree = "<group>"; };
 		6C8A268F25D0427500CB73B9 /* ObjectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectHelper.swift; sourceTree = "<group>"; };
 		6C8A269525D06E6200CB73B9 /* SurfaceDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceDef.swift; sourceTree = "<group>"; };
+		6C9A9ADC25DA19C2007FDE42 /* DeviceUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUpdateDelegate.swift; sourceTree = "<group>"; };
 		6C9B047625CB5C260018F49F /* HintGlow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HintGlow.sks; sourceTree = "<group>"; };
 		6C9B047725CB5C260018F49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6CC1C76E25CCC17D00672D3A /* Sample Ground Tile Set.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Sample Ground Tile Set.sks"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				6CC1C77B25CE009D00672D3A /* SceneManagerDelegate.swift */,
 				6C886D5B25D850D1001AD2D2 /* PropertyReflectable.swift */,
+				6C9A9ADC25DA19C2007FDE42 /* DeviceUpdateDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				6C886D5C25D850D1001AD2D2 /* PropertyReflectable.swift in Sources */,
 				6C8A269625D06E6200CB73B9 /* SurfaceDef.swift in Sources */,
 				6C50E51625C7082F00C2422C /* GS+Creator.swift in Sources */,
+				6C9A9ADD25DA19C2007FDE42 /* DeviceUpdateDelegate.swift in Sources */,
 				6CC1C78125CE053800672D3A /* Layer.swift in Sources */,
 				6C778B6E25C64449003565BF /* Constants.swift in Sources */,
 				6C134D1325CA3275004C3B91 /* GS+Toss.swift in Sources */,

@@ -13,7 +13,6 @@ enum TossType {
 }
 
 class GameScene: SKScene {
-  
   var splop: Splop!
   var worldLayer: Layer!
   var worldNode: SKNode!
@@ -53,5 +52,12 @@ class GameScene: SKScene {
 //    let playerIdleFrames = AnimationHelper.loadTextures(fromAtlasFileNamed: C_ANIS.Player.idle.atlasName, withName: C_ANIS.Player.idle.frameKey)
   }
 
-  
+}
+
+extension GameScene: DeviceUpdateDelegate {
+  func didRotate(to size: CGSize, isLandscape: Bool) {
+    self.size = size
+    moveWorldIfNeeded()
+    print("[M@] Rotated: [\(isLandscape)] isLandscape")
+  }
 }
